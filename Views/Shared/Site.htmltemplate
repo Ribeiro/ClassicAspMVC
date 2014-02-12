@@ -1,0 +1,38 @@
+<%  Const withTemplate = True   %>
+<html>
+<head runat="server">
+	<title>My MVC Application</title>
+	<link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div class="page">
+
+		<div id="header">
+
+			<div id="title">
+				<h1>My MVC Application</h1>
+			</div>
+
+			<div id="menucontainer" class="menucontainer">
+				<ul id="menu" class="menu">
+
+					<li>
+						<%=Html.ActionLink("User","User","List", "")%></li>
+
+					<li>
+						<%=Html.ActionLink("Project","Project","List", "")%></li>
+
+				</ul>
+			</div>
+
+		</div>
+
+		<div id="main">
+			<%ContentPlaceHolder()%></div>
+
+		<div id="footer"></div>
+
+	</div>
+</body>
+</html>
