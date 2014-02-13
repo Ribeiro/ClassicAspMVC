@@ -5,6 +5,15 @@
 Const defaultController = "Home"
 Const defaultAction = "Index"
 
+    partial     = QueryString("partial")
+
+    If Not(IsEmpty(partial) or IsNull(partial))  Then
+        If not Route () then
+            result = RouteDebug ()
+        End If
+    else
+        %> <!--#include file="views/shared/Site.htmltemplate" --> <%
+    End If
 
 Function ContentPlaceHolder()
     If not Route () then
@@ -59,7 +68,7 @@ Function Route ()
     Else
         actionCallString = " controllerInstance." + action + "()"
     End If
-    'Response.Write actionCallString
+    'Response.Write controllerName
     Eval (actionCallString)
     Route = true
 End Function
@@ -100,15 +109,4 @@ Function actionClean(strtoclean)
     outputStr = objRegExp.Replace(outputStr, "")
     actionClean = outputStr
 End Function
-
-    partial     = QueryString("partial")
-
-    If Not(IsEmpty(partial) or IsNull(partial))  Then
-        If not Route () then
-            result = RouteDebug ()
-        End If
-    else
-        %> <!--#include file="views/shared/Site.htmltemplate" --> <%
-    End If
-
  %>

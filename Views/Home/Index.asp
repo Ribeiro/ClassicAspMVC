@@ -1,6 +1,3 @@
-<%
-	Html.Title("aaaa")
-%>
 This is an INDEX page
 <br />
 <%=Html.ActionLink("Index", "Home", "Index" , "") %>
