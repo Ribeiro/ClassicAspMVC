@@ -3,12 +3,15 @@
 class UserController
 Dim Model
 Dim ViewData
+Dim Log
 
 private sub Class_Initialize()
-Set ViewData = Server.CreateObject("Scripting.Dictionary")
+    Set ViewData = Server.CreateObject("Scripting.Dictionary")
+    Set Log = new logger
 end sub
 
 private sub Class_Terminate()
+    Set Log = nothing
 end sub
 
 public Sub List()
@@ -21,7 +24,9 @@ public Sub List()
 End Sub
 
 public Sub Create()
+    Log.log("[ClassicAspMvc]")
     set Model = new User
+    
     %>
 <!--#include file="../views/User/Create.asp" -->
 <%
